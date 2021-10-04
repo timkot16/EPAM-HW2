@@ -14,14 +14,25 @@ public class CreatingANumbers {
             double max = array[array.length - 1];
             double min = array[0];
             double sum = min + max;
-            System.out.println(max + " + " + min + " = " + sum);
+            System.out.println(min + " + " + max + " = " + sum);
             return sum;
         }
     }
 
     public static double[] creatingArrayOfNumber(Scanner scanner) {
-        System.out.print("How many numbers will you enter? ");
+        System.out.println("How many numbers will you enter? ");
         int number = scanner.nextInt();
+        boolean status = true;
+        while (status) {
+            if (number < 0) {
+                System.out.println("Number cannot be negative, try again, please.");
+                number = scanner.nextInt();
+            } else {
+                status = false;
+            }
+        }
+
+        System.out.println("Ok, now enter numbers");
         double[] arrayOfNumbers = new double[number];
         for (int i = 0; i < arrayOfNumbers.length; i++) {
             while (!scanner.hasNextDouble()) {
